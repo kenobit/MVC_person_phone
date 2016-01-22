@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Person_Phone", "Person_Phone\Person_Phone.csproj", "{7C858B65-D58E-47F8-A777-9662031A329B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Person_Phone.Tests", "Person_Phone.Tests\Person_Phone.Tests.csproj", "{D98526AA-AAEC-4929-9277-AF86822865DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C858B65-D58E-47F8-A777-9662031A329B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C858B65-D58E-47F8-A777-9662031A329B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C858B65-D58E-47F8-A777-9662031A329B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C858B65-D58E-47F8-A777-9662031A329B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D98526AA-AAEC-4929-9277-AF86822865DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D98526AA-AAEC-4929-9277-AF86822865DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D98526AA-AAEC-4929-9277-AF86822865DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D98526AA-AAEC-4929-9277-AF86822865DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45
+	EndGlobalSection
+EndGlobal
