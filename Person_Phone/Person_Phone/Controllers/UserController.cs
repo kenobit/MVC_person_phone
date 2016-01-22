@@ -31,8 +31,12 @@ namespace PersonDB_project.Controllers
 
         // GET: User/Create
         [HttpPost]
-        public ActionResult Create(User user)
+        public ActionResult Create(User user, FormCollection collection)
         {
+            for (int i = 4; i < collection.Keys.Count; i+=2)
+            {
+                user.Phones.Add(new Phone(collection.GetValue(collection.Keys[i]).AttemptedValue, collection.GetValue(collection.Keys[i+1]).AttemptedValue, user.Id));
+            }
             repository.Create(user);
             repository.Save();
             return RedirectToAction("MultiIndex");

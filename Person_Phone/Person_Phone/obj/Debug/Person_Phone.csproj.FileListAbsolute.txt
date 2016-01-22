@@ -46,3 +46,6 @@ C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\bin\Newtonsoft.Json.xm
 C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\obj\Debug\Person_Phone.csprojResolveAssemblyReference.cache
 C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\obj\Debug\Person_Phone.dll
 C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\obj\Debug\Person_Phone.pdb
+C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\obj\Debug\Person_Phone.Migrations.InitialCreate.resources
+C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\obj\Debug\Person_Phone.csproj.GenerateResource.Cache
+C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\obj\Debug\Person_Phone.Migrations.Migration1.resources

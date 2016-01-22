@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PersonDB_project;
 using PersonDB_project.Models;
+using Microsoft.Practices.EnterpriseLibrary.Common.Utility;
 
 namespace EntityRepo
 {
@@ -20,6 +21,7 @@ namespace EntityRepo
         public void Delete(int id)
         {
             db.Users.Remove(GetById(id));
+            db.Phones.RemoveRange(db.Phones.Where(p => p.UserId == id));
         }
 
         public IEnumerable<User> GetAll()

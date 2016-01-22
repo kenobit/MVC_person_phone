@@ -13,10 +13,10 @@ namespace PersonDB_project.Models
         public int Id { get; set; }
 
         [DataType(DataType.PhoneNumber)]
-        [StringLength(30, MinimumLength = 2, ErrorMessage = "Длина телефона должна быть от {1} до {0} символов")]
+        // [StringLength(30, MinimumLength = 2, ErrorMessage = "Длина телефона должна быть от {1} до {0} символов")]
         public string PhoneNumber { get; set; }
 
-        [StringLength(35, MinimumLength = 1, ErrorMessage = "Длина типа телефона должна быть от {1} до {0} символов")]
+        // [StringLength(35, MinimumLength = 1, ErrorMessage = "Длина типа телефона должна быть от {1} до {0} символов")]
         public string PhoneType { get; set; }
 
         public int? UserId { get; set; }
@@ -27,14 +27,11 @@ namespace PersonDB_project.Models
         {
 
         }
-        public Phone(string type, string number, int? userId)
+        public Phone(string type, string number, int userId)
         {
             this.PhoneType = type;
             this.PhoneNumber = number;
-            if (userId == null)
-            {
-                this.UserId = userId;
-            }
+            this.UserId = userId;
         }
     }
 
