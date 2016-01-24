@@ -15,7 +15,7 @@ namespace PersonDB_project.Controllers
         public ActionResult Details(int id)
         {
             User user = repository.GetById(id);
-            
+
             return View(user);
         }
         public ActionResult MultiIndex()
@@ -33,9 +33,12 @@ namespace PersonDB_project.Controllers
         [HttpPost]
         public ActionResult Create(User user, FormCollection collection)
         {
-            for (int i = 4; i < collection.Keys.Count; i+=2)
+            for (int i = 4; i < collection.Keys.Count; i += 2)
             {
-                user.Phones.Add(new Phone(collection.GetValue(collection.Keys[i]).AttemptedValue, collection.GetValue(collection.Keys[i+1]).AttemptedValue, user.Id));
+                if (collection.GetValue(collection.Keys[i]).AttemptedValue != "" || collection.GetValue(collection.Keys[i + 1]).AttemptedValue != "")
+                {
+                    user.Phones.Add(new Phone(collection.GetValue(collection.Keys[i]).AttemptedValue, collection.GetValue(collection.Keys[i + 1]).AttemptedValue, user.Id));
+                }
             }
             repository.Create(user);
             repository.Save();
@@ -51,7 +54,7 @@ namespace PersonDB_project.Controllers
 
         // POST: User/Edit/5
         [HttpPost]
-        public ActionResult Edit(User item)
+        public ActionResult Edit(User item,FormCollection collection)
         {
             try
             {

@@ -33,11 +33,15 @@
         <dd>
             @Html.DisplayFor(model => model.Age)
         </dd>
+
+        <dt>
+            @Html.DisplayName("Телефоны")
+        </dt>
         @foreach (var item in Model.Phones)
         {
             <dd>
-                @Html.DisplayName(item.PhoneType)
-                @Html.Display(item.PhoneNumber)
+                @Html.DisplayName(item.PhoneType)  
+                @Html.DisplayName(item.PhoneNumber)
             </dd>
         }
         
@@ -46,5 +50,5 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "MultiIndex")
 </p>

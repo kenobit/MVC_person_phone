@@ -21,37 +21,44 @@
             @Html.DisplayNameFor(model => model.Age)
         </th>
         <th>
-
+            @Html.DisplayName("Телефон")
+        </th>
+        <th>
         </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Age)
-        </td>
-        @foreach (var phone in item.Phones)
-        {
+    @foreach (var item in Model)
+    {
+        <tr>
             <td>
-                @Html.DisplayFor(modelItem => phone.PhoneType)
+                @Html.DisplayFor(modelItem => item.FirstName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => phone.PhoneNumber)
+                @Html.DisplayFor(modelItem => item.LastName)
             </td>
-        }
-        
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @foreach (var phone in item.Phones)
+                {
+                    <span>
+                        @Html.DisplayFor(modelItem => phone.PhoneType)
+                    </span> 
+                    
+                    <span>
+                        @Html.DisplayFor(modelItem => phone.PhoneNumber) 
+                    </span>
+                    <br />
+                }
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>
