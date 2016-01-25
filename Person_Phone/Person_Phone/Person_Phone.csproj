@@ -151,6 +151,10 @@
     <Compile Include="Migrations\201601221425336_Migration1.Designer.cs">
       <DependentUpon>201601221425336_Migration1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601251020073_Cascade.cs" />
+    <Compile Include="Migrations\201601251020073_Cascade.Designer.cs">
+      <DependentUpon>201601251020073_Cascade.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityRepo\EntityRepository.cs" />
     <Compile Include="Models\EntityRepo\EntityUserContext.cs" />
@@ -214,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601221425336_Migration1.resx">
       <DependentUpon>201601221425336_Migration1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601251020073_Cascade.resx">
+      <DependentUpon>201601251020073_Cascade.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -3,13 +3,15 @@
 @{
     ViewBag.Title = "Edit";
 }
-
+<script type="text/javascript">
+    function removeInput(elem) {
+        elem.parentNode.remove();
+    }
+</script>
 <h2>Edit</h2>
 
 @using (Html.BeginForm())
 {
-    string phoneType = "phoneType";
-    string phoneNumber = "phoneNumber";
     int index = 0;
     <div class="form-horizontal">
         <h4>User</h4>
@@ -46,14 +48,21 @@
             <div>
                 @Html.DisplayName("Телефоны")
             </div>
-            @foreach (var item in Model.Phones)
+            @for(int i = 0; i < Model.Phones.Count; i++)
             {
-                index++;
-                <div>
+                <div class="marT5px">
+                    @Html.HiddenFor(hidden => Model.Phones[i].UserId)
+                    @Html.HiddenFor(hidden => Model.Phones[i].Id)
                     Type
-                    @Html.EditorFor(i => item.PhoneType, new { htmlAttributes = new { @class = "form-control", @Name = phoneType + index.ToString() } })
+                    @Html.EditorFor(type => Model.Phones[i].PhoneType, new { htmlAttributes = new { @class = "form-control" } })
                     Number
-                    @Html.EditorFor(i => item.PhoneNumber, new { htmlAttributes = new { @class = "form-control", @Name = phoneNumber + index.ToString() } })
+                    @Html.EditorFor(number => Model.Phones[i].PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    <button class="btn btn-danger" onclick="removeInput(this)" >-</button>
+                    @if (false)
+                    {
+                        @Model.Phones.Remove(Model.Phones[i])
+
+                    }
                 </div>
             }
         </div>

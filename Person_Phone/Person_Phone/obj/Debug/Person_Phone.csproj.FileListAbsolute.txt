@@ -100,3 +100,4 @@ D:\GIT\Valtech\Person-Phone\Person_Phone\Person_Phone\obj\Debug\Person_Phone.Mig
 D:\GIT\Valtech\Person-Phone\Person_Phone\Person_Phone\obj\Debug\Person_Phone.csproj.GenerateResource.Cache
 D:\GIT\Valtech\Person-Phone\Person_Phone\Person_Phone\obj\Debug\Person_Phone.dll
 D:\GIT\Valtech\Person-Phone\Person_Phone\Person_Phone\obj\Debug\Person_Phone.pdb
+C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\obj\Debug\Person_Phone.Migrations.Cascade.resources

@@ -21,7 +21,7 @@ namespace EntityRepo
         public void Delete(int id)
         {
             db.Users.Remove(GetById(id));
-            db.Phones.RemoveRange(db.Phones.Where(p => p.UserId == id));
+           // db.Phones.RemoveRange(db.Phones.Where(p => p.UserId == id));
         }
 
         public IEnumerable<User> GetAll()
@@ -41,7 +41,13 @@ namespace EntityRepo
 
         public void Update(User item)
         {
-            db.Entry(item).State = System.Data.Entity.EntityState.Modified;
+            db.Entry<User>(item).State = System.Data.Entity.EntityState.Modified;
+
+            foreach (Phone itemP in item.Phones)
+            {
+                UpdatePhone(itemP);
+            }
+
             int Id = item.Id;
             User user = GetById(Id);
          
@@ -50,6 +56,20 @@ namespace EntityRepo
             user.Age = item.Age;
 
             db.SaveChanges();
+        }
+
+        private void UpdatePhone(Phone phone)
+        {
+            db.Entry<Phone>(phone).State = System.Data.Entity.EntityState.Modified;
+            try {
+                Phone ph = db.Phones.Find(phone.Id);
+                ph.PhoneNumber = phone.PhoneNumber;
+                ph.PhoneType = phone.PhoneType;
+            }
+            catch
+            {
+                db.Phones.Add(phone);
+            }
         }
     }
 }
