@@ -12,7 +12,8 @@
     <script language="javascript">
         var increment = 0;
         function add_input() {
-            document.getElementById("phoneDiv").innerHTML = document.getElementById("phoneDiv").innerHTML + '<br /><div class="form-group form-inline">Тип ' + "<input class='form-control' type=\"text\" name=\"TypePhone" + (increment += 1) + "\"/>" + " Номер " + "<input class='form-control' type=\"tel\" name=\"NumPhone" + increment + "\" /></div>";
+            //document.getElementById("phoneDiv").appendChild(document.getElementById("phoneDiv").innerHTML + '<br /><div class="form-group form-inline">Тип ' + "<input class='form-control' type=\"text\" name=\"TypePhone" + (increment += 1) + "\"/>" + " Номер " + "<input class='form-control' type=\"tel\" name=\"NumPhone" + increment + "\" /></div>");
+            $("#phoneDiv").append("<br /><div class='form-group form-inline'>Тип <input class='form-control' type=\"text\" name=\"TypePhone" + (increment += 1) + "\"/>" + " Номер " + "<input class='form-control' type=\"tel\" name=\"NumPhone" + increment + "\" /></div>")
         }
     </script>
     @Html.AntiForgeryToken()
