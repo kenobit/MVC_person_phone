@@ -25,6 +25,11 @@ namespace PersonDB_project
                         repository = new AdoRepo.AdoNetRepository(@"Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename='C:\Git\Valtech\MVC_personDB_Project\PersonDB_project\PersonDB_project\App_Data\EntityRepo.EntityUserContext.mdf';Integrated Security=True");
                         break;
                     }
+                case "NH":
+                    {
+                        repository = new Person_Phone.NHibernateRepo.NHibernateRepository(@"Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename='C:\Git\Valtech\MVC_personDB_Project\PersonDB_project\PersonDB_project\App_Data\EntityRepo.EntityUserContext.mdf';Integrated Security=True");
+                        break;
+                    }
                 default:
                     {
                         repository = new EntityRepository();

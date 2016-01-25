@@ -9,7 +9,7 @@ namespace PersonDB_project.Controllers
 {
     public class UserController : Controller
     {
-        IRepository<User> repository = new DBFactory().GetInstance("Shit");
+        IRepository<User> repository = new DBFactory().GetInstance("NH");
 
         // GET: User/Details/5
         public ActionResult Details(int id)

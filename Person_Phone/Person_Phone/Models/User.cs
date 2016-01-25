@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FluentNHibernate.Mapping;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -29,6 +30,17 @@ namespace PersonDB_project.Models
         {
             Phones = new List<Phone>();
         }
+    }
 
+    public class MapUser : ClassMap<User>
+    {
+        public MapUser()
+        {
+            Id(x => x.Id);
+            Map(x => x.FirstName);
+            Map(x => x.LastName);
+            Map(x => x.Age);
+
+        }
     }
 }

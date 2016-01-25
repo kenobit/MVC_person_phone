@@ -43,7 +43,6 @@ C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\bin\System.Web.WebPage
 C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\bin\System.Web.WebPages.Razor.xml
 C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\bin\Antlr3.Runtime.pdb
 C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\bin\Newtonsoft.Json.xml
-C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\obj\Debug\Person_Phone.csprojResolveAssemblyReference.cache
 C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\obj\Debug\Person_Phone.dll
 C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\obj\Debug\Person_Phone.pdb
 C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\obj\Debug\Person_Phone.Migrations.InitialCreate.resources
@@ -101,3 +100,10 @@ D:\GIT\Valtech\Person-Phone\Person_Phone\Person_Phone\obj\Debug\Person_Phone.csp
 D:\GIT\Valtech\Person-Phone\Person_Phone\Person_Phone\obj\Debug\Person_Phone.dll
 D:\GIT\Valtech\Person-Phone\Person_Phone\Person_Phone\obj\Debug\Person_Phone.pdb
 C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\obj\Debug\Person_Phone.Migrations.Cascade.resources
+C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\bin\FluentNHibernate.dll
+C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\bin\Iesi.Collections.dll
+C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\bin\NHibernate.dll
+C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\bin\FluentNHibernate.pdb
+C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\bin\FluentNHibernate.xml
+C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\bin\Iesi.Collections.xml
+C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\bin\NHibernate.xml
