@@ -54,19 +54,27 @@ namespace PersonDB_project.Controllers
 
         // POST: User/Edit/5
         [HttpPost]
-        public ActionResult Edit(User item,FormCollection collection)
+        public ActionResult Edit(User user,FormCollection collection)
         {
-            try
-            {
-                repository.Update(item);
+            //try
+            //{
+                user.Phones.Clear();
+                for (int i = 5; i < collection.Keys.Count; i += 2)
+                {
+                    if (collection.GetValue(collection.Keys[i]).AttemptedValue != "" || collection.GetValue(collection.Keys[i + 1]).AttemptedValue != "")
+                    {
+                        user.Phones.Add(new Phone(collection.GetValue(collection.Keys[i]).AttemptedValue, collection.GetValue(collection.Keys[i+1]).AttemptedValue, user.Id));
+                    }
+                }
+                repository.Update(user);
                 repository.Save();
 
                 return RedirectToAction("MultiIndex");
-            }
-            catch
-            {
-                return View(item);
-            }
+            //}
+            //catch
+            //{
+            //    return View(user);
+            //}
         }
 
         // GET: User/Delete/5

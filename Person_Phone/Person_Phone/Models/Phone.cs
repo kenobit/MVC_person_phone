@@ -19,6 +19,7 @@ namespace PersonDB_project.Models
         // [StringLength(35, MinimumLength = 1, ErrorMessage = "Длина типа телефона должна быть от {1} до {0} символов")]
         public string PhoneType { get; set; }
 
+        //[ForeignKey("user")]
         public int? UserId { get; set; }
 
         public User user { get; set; }
