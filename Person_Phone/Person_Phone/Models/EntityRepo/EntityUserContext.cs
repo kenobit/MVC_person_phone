@@ -11,7 +11,7 @@ namespace EntityRepo
     class EntityUserContext : DbContext
     {
         public DbSet<User> Users { get; set; }
-        public DbSet<PhoneViewModel> Phones { get; set; }
+        public DbSet<Phone> Phones { get; set; }
 
         public EntityUserContext() : base("Default Connection")
         {

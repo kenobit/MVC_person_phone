@@ -27,10 +27,10 @@ namespace PersonDB_project.Models
             [Display(Name = "Возраст")]
         public int Age { get; set; }
 
-        public virtual List<PhoneViewModel> Phones { get; set; }
+        public virtual List<Phone> Phones { get; set; }
         public User()
         {
-            Phones = new List<PhoneViewModel>();
+            Phones = new List<Phone>();
         }
     }
 
@@ -46,28 +46,4 @@ namespace PersonDB_project.Models
         }
     }
 
-    public class UserDocument
-    {
-        
-        //public ObjectId id { get; set; }
-        [BsonId]
-        public int Id { get; set; }
-        [BsonElement("FirstName")]
-        public string FirstName { get; set; }
-        [BsonElement("LastName")]
-        public string LastName { get; set; }
-        [BsonElement("Age")]
-        public int Age { get; set; }
-        public static explicit operator User(UserDocument udoc)
-        {
-            return new User() { Id = udoc.Id, FirstName = udoc.FirstName, LastName = udoc.LastName, Age = udoc.Age };
-        }
-
-        public virtual List<PhoneViewModel> Phones { get; set; }
-
-        public UserDocument()
-        {
-            Phones = new List<PhoneViewModel>();
-        }
-    }
 }

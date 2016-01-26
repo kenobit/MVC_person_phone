@@ -171,6 +171,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DBFactory.cs" />
+    <Compile Include="Entities\MongoPhone.cs" />
+    <Compile Include="Entities\MongoUser.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

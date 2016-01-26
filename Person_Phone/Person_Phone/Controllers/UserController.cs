@@ -1,4 +1,5 @@
-﻿using Person_Phone.UserService;
+﻿using Person_Phone.Models;
+using Person_Phone.UserService;
 using PersonDB_project.Models;
 using System;
 using System.Collections.Generic;
@@ -52,7 +53,7 @@ namespace PersonDB_project.Controllers
                 }
             }
             service.Create(user);
-            service.Save();
+            //service.Save();
             return RedirectToAction("MultiIndex");
         }
 

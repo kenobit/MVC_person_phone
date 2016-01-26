@@ -93,7 +93,7 @@ namespace Person_Phone.NHibernateRepo
         private ISessionFactory CreateSessionFactory(string connectionString)
         {
             ISessionFactory isessionfact = Fluently.Configure()
-                .Database(MsSqlConfiguration.MsSql7
+                .Database(MsSqlConfiguration.MsSql2012
                 .ConnectionString(connectionString))
                 .Mappings(m => m
                 .FluentMappings.AddFromAssemblyOf<User>())

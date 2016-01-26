@@ -7,7 +7,7 @@ using System.Web;
 
 namespace PersonDB_project.Models
 {
-    public class PhoneViewModel
+    public class Phone
     {
         [Key]
         public int Id { get; set; }
@@ -24,11 +24,11 @@ namespace PersonDB_project.Models
 
         public User user { get; set; }
 
-        public PhoneViewModel()
+        public Phone()
         {
 
         }
-        public PhoneViewModel(string type, string number, int userId)
+        public Phone(string type, string number, int userId)
         {
             this.PhoneType = type;
             this.PhoneNumber = number;
