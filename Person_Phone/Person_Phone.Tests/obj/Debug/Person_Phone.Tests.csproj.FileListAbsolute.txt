@@ -72,7 +72,6 @@ C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\System.Web.Optimiz
 C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\NHibernate.dll
 C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\FluentNHibernate.dll
 C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\MongoDB.Driver.dll
-C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\MongoDB.Driver.Legacy.dll
 C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\MongoDB.Bson.dll
 C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
 C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\Iesi.Collections.dll
@@ -92,7 +91,6 @@ C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\NHibernate.xml
 C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\FluentNHibernate.pdb
 C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\FluentNHibernate.xml
 C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\MongoDB.Driver.xml
-C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\MongoDB.Driver.Legacy.xml
 C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\MongoDB.Bson.xml
 C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml
 C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\Iesi.Collections.xml
@@ -102,3 +100,5 @@ C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\obj\Debug\Person_Phone.Tests
 C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\obj\Debug\Person_Phone.Tests.pdb
 C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\Moq.dll
 C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\Moq.xml
+C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\nunit.framework.dll
+C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\nunit.framework.xml

@@ -23,5 +23,14 @@ namespace PersonDB_project.Models
         {
             Phones = new List<PhoneViewModel>();
         }
+
+        public UserViewModel(int Id, string firstName, string lastName, int age)
+        {
+            Phones = new List<PhoneViewModel>();
+            this.Id = Id;
+            this.FirstName = firstName;
+            this.LastName = LastName;
+            this.Age = age;
+        }
     }
 }
