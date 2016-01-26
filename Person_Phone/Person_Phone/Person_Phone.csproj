@@ -187,6 +187,10 @@
     <Compile Include="Migrations\201601251020073_Cascade.Designer.cs">
       <DependentUpon>201601251020073_Cascade.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601261001115_ServiceMigration.cs" />
+    <Compile Include="Migrations\201601261001115_ServiceMigration.Designer.cs">
+      <DependentUpon>201601261001115_ServiceMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityRepo\EntityRepository.cs" />
     <Compile Include="Models\EntityRepo\EntityUserContext.cs" />
@@ -197,9 +201,8 @@
     <Compile Include="NHibernateRepo\NHibernateRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserService\IService.cs" />
-    <Compile Include="UserService\PhoneViewModel.cs" />
+    <Compile Include="Models\PhoneViewModel.cs" />
     <Compile Include="UserService\ServiceUser.cs" />
-    <Compile Include="UserService\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -259,6 +262,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601251020073_Cascade.resx">
       <DependentUpon>201601251020073_Cascade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601261001115_ServiceMigration.resx">
+      <DependentUpon>201601261001115_ServiceMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

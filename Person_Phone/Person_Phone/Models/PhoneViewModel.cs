@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Person_Phone.UserService
+namespace Person_Phone.Models
 {
     public class PhoneViewModel
     {

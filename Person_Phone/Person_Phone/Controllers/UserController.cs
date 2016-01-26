@@ -10,19 +10,25 @@ namespace PersonDB_project.Controllers
 {
     public class UserController : Controller
     {
-        ServiceUser service = new ServiceUser();
+        IService service;
 
-        public UserController(IRepository<User> repository)
+        public UserController()
         {
-                
+            service = new ServiceUser();
+        }
+
+        public UserController(IService repository)
+        {
+            service = repository;
         }
 
         // GET: User/Details/5
         public ActionResult Details(int id)
         {
-            Person_Phone.UserService.UserViewModel user = service.GetById(id);
+            UserViewModel user = service.GetById(id);
             return View(user);
         }
+
         public ActionResult MultiIndex()
         {
             return View(service.GetAll());
@@ -36,13 +42,13 @@ namespace PersonDB_project.Controllers
 
         // GET: User/Create
         [HttpPost]
-        public ActionResult Create(Person_Phone.UserService.UserViewModel user, FormCollection collection)
+        public ActionResult Create(UserViewModel user, FormCollection collection)
         {
             for (int i = 4; i < collection.Keys.Count; i += 2)
             {
                 if (collection.GetValue(collection.Keys[i]).AttemptedValue != "" || collection.GetValue(collection.Keys[i + 1]).AttemptedValue != "")
                 {
-                    user.Phones.Add(new Person_Phone.UserService.PhoneViewModel(collection.GetValue(collection.Keys[i]).AttemptedValue, collection.GetValue(collection.Keys[i + 1]).AttemptedValue, user.Id));
+                    user.Phones.Add(new PhoneViewModel(collection.GetValue(collection.Keys[i]).AttemptedValue, collection.GetValue(collection.Keys[i + 1]).AttemptedValue, user.Id));
                 }
             }
             service.Create(user);
@@ -53,13 +59,13 @@ namespace PersonDB_project.Controllers
         // GET: User/Edit/5
         public ActionResult Edit(int id)
         {
-            Person_Phone.UserService.UserViewModel user = service.GetById(id);
+            UserViewModel user = service.GetById(id);
             return View(user);
         }
 
         // POST: User/Edit/5
         [HttpPost]
-        public ActionResult Edit(Person_Phone.UserService.UserViewModel user)
+        public ActionResult Edit(UserViewModel user)
         {
             service.Update(user);
             service.Save();
@@ -70,7 +76,7 @@ namespace PersonDB_project.Controllers
         // GET: User/Delete/5
         public ActionResult Delete(int id)
         {
-            Person_Phone.UserService.UserViewModel user = service.GetById(id);
+            UserViewModel user = service.GetById(id);
 
             return View(user);
         }

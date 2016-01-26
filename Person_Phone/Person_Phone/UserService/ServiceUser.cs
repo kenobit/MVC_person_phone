@@ -9,18 +9,7 @@ namespace Person_Phone.UserService
 {
     public class ServiceUser : IService
     {
-        public IRepository<User> repository
-        {
-            get
-            {
-                return this.repository;
-            }
-
-            set
-            {
-                this.repository = value;
-            }
-        }
+        public IRepository<User> repository;
 
         public ServiceUser()
         {
@@ -72,7 +61,7 @@ namespace Person_Phone.UserService
         private UserViewModel ToViewModel(User user)
         {
             UserViewModel userVM = new UserViewModel();
-
+            userVM.Id = user.Id;
             userVM.FirstName = user.FirstName;
             userVM.LastName = user.LastName;
             userVM.Age = user.Age;

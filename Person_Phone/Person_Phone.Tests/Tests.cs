@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using PersonDB_project.Models;
 using PersonDB_project.Controllers;
+using System.Web.Mvc;
+using Person_Phone.UserService;
 
 namespace Person_Phone.Tests
 {
@@ -18,15 +20,16 @@ namespace Person_Phone.Tests
         public void IndexViewModelNotNull()
         {
             // Arrange
-            var mock = new Mock<IRepository<User>>();
-            mock.Setup(a => a.GetAll()).Returns(new List<User>());
+            var mock = new Mock<IService>();
+            List<UserViewModel> list = new List<UserViewModel>();
+            mock.Setup(a => a.GetAll()).Returns(list);
             UserController controller = new UserController(mock.Object);
 
             // Act
-           // ViewResult result = controller.Index() as ViewResult;
+            ViewResult result = controller.MultiIndex() as ViewResult;
 
             // Assert
-            //Assert.IsNotNull(result.Model);
+            Assert.IsNotNull(result.Model);
         }
     }
 }

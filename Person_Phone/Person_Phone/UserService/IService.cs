@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Person_Phone.UserService
 {
-    interface IService
+    public interface IService
     {
-        PersonDB_project.IRepository<User> repository { get; set; }
+        //IRepository<User> repository { get; set; }
         IEnumerable<UserViewModel> GetAll();
         UserViewModel GetById(int id);
         void Create(UserViewModel item);
