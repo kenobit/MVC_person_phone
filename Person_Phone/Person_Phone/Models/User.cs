@@ -13,24 +13,37 @@ namespace PersonDB_project.Models
     public class User
     {
         [Key]
-        public int Id { get; set; }
+        public virtual int Id { get; set; }
 
-            [Display(Name = "Имя")]
-            //[StringLength(50,MinimumLength =3,ErrorMessage = "имя не может быть длиннее {0} и короче {1} символов")]
-        public string FirstName { get; set; }
+        [Display(Name = "Имя")]
+        //[StringLength(50,MinimumLength =3,ErrorMessage = "имя не может быть длиннее {0} и короче {1} символов")]
+        public virtual string FirstName { get; set; }
 
-            [Display(Name = "Фамилия")]
-            //[StringLength(50,MinimumLength =3,ErrorMessage = "Фамилия не может быть длиннее {0} и короче {1} символов")]
-        public string LastName { get; set; }
+        [Display(Name = "Фамилия")]
+        //[StringLength(50,MinimumLength =3,ErrorMessage = "Фамилия не может быть длиннее {0} и короче {1} символов")]
+        public virtual string LastName { get; set; }
 
-           // [Range(0,100,ErrorMessage = "Возраст не может быть больше {1} и меньше {0} лет ")]
-            [Display(Name = "Возраст")]
-        public int Age { get; set; }
+        // [Range(0,100,ErrorMessage = "Возраст не может быть больше {1} и меньше {0} лет ")]
+        [Display(Name = "Возраст")]
+        public virtual int Age { get; set; }
 
-        public virtual List<PhoneViewModel> Phones { get; set; }
+        private IList<Phone> _phones;
+        [Display(Name = "Телефоны")]
+        public virtual IList<Phone> Phones
+        {
+            get
+            {
+                return _phones ?? (_phones = new List<Phone>());
+            }
+            set
+            {
+                _phones = value;
+            }
+        }
+
         public User()
         {
-            Phones = new List<PhoneViewModel>();
+
         }
     }
 
@@ -42,13 +55,14 @@ namespace PersonDB_project.Models
             Map(x => x.FirstName);
             Map(x => x.LastName);
             Map(x => x.Age);
-
+            HasMany(x => x.Phones);
+            Table("Users");
         }
     }
 
     public class UserDocument
     {
-        
+
         //public ObjectId id { get; set; }
         [BsonId]
         public int Id { get; set; }
@@ -63,11 +77,11 @@ namespace PersonDB_project.Models
             return new User() { Id = udoc.Id, FirstName = udoc.FirstName, LastName = udoc.LastName, Age = udoc.Age };
         }
 
-        public virtual List<PhoneViewModel> Phones { get; set; }
+        public virtual List<Phone> Phones { get; set; }
 
         public UserDocument()
         {
-            Phones = new List<PhoneViewModel>();
+            Phones = new List<Phone>();
         }
     }
 }

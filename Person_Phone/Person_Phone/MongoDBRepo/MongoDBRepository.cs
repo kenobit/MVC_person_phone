@@ -11,8 +11,8 @@ namespace Person_Phone.MongoDBRepo
     public class MongoDBRepository : IRepository<UserDocument>
     {
 
-        MongoClient Client;
-        MongoDatabase database;
+        //MongoClient Client;
+        //MongoDatabase database;
 
         //public MongoDBRepository(string connectionString)
         //{

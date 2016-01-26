@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using PersonDB_project;
 using PersonDB_project.Models;
+using Person_Phone.Models;
 
 namespace Person_Phone.UserService
 {
@@ -13,7 +14,9 @@ namespace Person_Phone.UserService
 
         public ServiceUser()
         {
-            this.repository = new EntityRepo.EntityRepository();
+            this.repository = new NHibernateRepo.NHibernateRepository();
+            //this.repository = new PersonDB_project.AdoRepo.AdoNetRepository(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename='C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\App_Data\Default Connection.mdf';Integrated Security=True;Connect Timeout=30");
+            //this.repository = new EntityRepo.EntityRepository();
         }
 
         public ServiceUser(IRepository<User> repository)
@@ -66,7 +69,7 @@ namespace Person_Phone.UserService
             userVM.LastName = user.LastName;
             userVM.Age = user.Age;
 
-            foreach (PersonDB_project.Models.PhoneViewModel phone in user.Phones)
+            foreach (PersonDB_project.Models.Phone phone in user.Phones)
             {
                 PhoneViewModel phoneVM = ToPhoneViewModel(phone);
                 userVM.Phones.Add(phoneVM);
@@ -86,7 +89,7 @@ namespace Person_Phone.UserService
 
             foreach (PhoneViewModel phoneVM in userVM.Phones)
             {
-                PersonDB_project.Models.PhoneViewModel phone = ToPhoneModel(phoneVM);
+                Phone phone = ToPhoneModel(phoneVM);
                 user.Phones.Add(phone);
             }
 
@@ -105,7 +108,7 @@ namespace Person_Phone.UserService
             return userVMs;
         }
 
-        private PhoneViewModel ToPhoneViewModel(PersonDB_project.Models.PhoneViewModel phone)
+        private PhoneViewModel ToPhoneViewModel(PersonDB_project.Models.Phone phone)
         {
             PhoneViewModel phoneVM = new PhoneViewModel();
 
@@ -125,9 +128,9 @@ namespace Person_Phone.UserService
             return phoneVM;
         }
 
-        private PersonDB_project.Models.PhoneViewModel ToPhoneModel(PhoneViewModel phoneVM)
+        private PersonDB_project.Models.Phone ToPhoneModel(PhoneViewModel phoneVM)
         {
-            PersonDB_project.Models.PhoneViewModel phone = new PersonDB_project.Models.PhoneViewModel();
+            PersonDB_project.Models.Phone phone = new PersonDB_project.Models.Phone();
 
             if (phoneVM == null)
             {

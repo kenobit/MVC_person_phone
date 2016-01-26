@@ -176,3 +176,16 @@ C:\Git\Person_phone\Person_Phone\Person_Phone\bin\Moq.dll
 C:\Git\Person_phone\Person_Phone\Person_Phone\bin\Moq.xml
 C:\Git\Person_phone\Person_Phone\Person_Phone\obj\Debug\Person_Phone.Migrations.ServiceMigration.resources
 C:\Git\Person_phone\Person_Phone\Person_Phone\obj\Debug\Person_Phone.csprojResolveAssemblyReference.cache
+C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\obj\Debug\Person_Phone.csprojResolveAssemblyReference.cache
+C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\obj\Debug\Person_Phone.Migrations.ServiceMigration.resources
+C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\bin\MongoDB.Bson.dll
+C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\bin\MongoDB.Driver.Core.dll
+C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\bin\MongoDB.Driver.dll
+C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\bin\MongoDB.Driver.Legacy.dll
+C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\bin\Moq.dll
+C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\bin\MongoDB.Bson.xml
+C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\bin\MongoDB.Driver.xml
+C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\bin\MongoDB.Driver.Legacy.xml
+C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\bin\Moq.xml
+C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\obj\Debug\Person_Phone.Migrations.ololo.resources
+C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone\obj\Debug\Person_Phone.Migrations.FromVM.resources

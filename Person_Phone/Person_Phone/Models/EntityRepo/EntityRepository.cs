@@ -43,7 +43,7 @@ namespace EntityRepo
         {
             db.Entry<User>(item).State = System.Data.Entity.EntityState.Modified;
 
-            foreach (PhoneViewModel itemP in item.Phones)
+            foreach (Phone itemP in item.Phones)
             {
                 UpdatePhone(itemP);
             }
@@ -58,11 +58,11 @@ namespace EntityRepo
             db.SaveChanges();
         }
 
-        private void UpdatePhone(PhoneViewModel phone)
+        private void UpdatePhone(Phone phone)
         {
-            db.Entry<PhoneViewModel>(phone).State = System.Data.Entity.EntityState.Modified;
+            db.Entry<Phone>(phone).State = System.Data.Entity.EntityState.Modified;
             try {
-                PhoneViewModel ph = db.Phones.Find(phone.Id);
+                Phone ph = db.Phones.Find(phone.Id);
                 ph.PhoneNumber = phone.PhoneNumber;
                 ph.PhoneType = phone.PhoneType;
             }

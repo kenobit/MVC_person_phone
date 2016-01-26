@@ -191,6 +191,14 @@
     <Compile Include="Migrations\201601261001115_ServiceMigration.Designer.cs">
       <DependentUpon>201601261001115_ServiceMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601261208050_ololo.cs" />
+    <Compile Include="Migrations\201601261208050_ololo.Designer.cs">
+      <DependentUpon>201601261208050_ololo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601261342173_FromVM.cs" />
+    <Compile Include="Migrations\201601261342173_FromVM.Designer.cs">
+      <DependentUpon>201601261342173_FromVM.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityRepo\EntityRepository.cs" />
     <Compile Include="Models\EntityRepo\EntityUserContext.cs" />
@@ -198,6 +206,7 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="MongoDBRepo\MongoDBRepository.cs" />
+    <Compile Include="NHibernateRepo\NHibernateHelper.cs" />
     <Compile Include="NHibernateRepo\NHibernateRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserService\IService.cs" />
@@ -265,6 +274,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601261001115_ServiceMigration.resx">
       <DependentUpon>201601261001115_ServiceMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601261208050_ololo.resx">
+      <DependentUpon>201601261208050_ololo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601261342173_FromVM.resx">
+      <DependentUpon>201601261342173_FromVM.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
