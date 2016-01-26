@@ -1,4 +1,5 @@
-﻿using PersonDB_project.Models;
+﻿using Person_Phone.UserService;
+using PersonDB_project.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,17 +10,22 @@ namespace PersonDB_project.Controllers
 {
     public class UserController : Controller
     {
-        IRepository<User> repository = new DBFactory().GetInstance("NH");
+        ServiceUser service = new ServiceUser();
+
+        public UserController(IRepository<User> repository)
+        {
+                
+        }
 
         // GET: User/Details/5
         public ActionResult Details(int id)
         {
-            User user = repository.GetById(id);
+            Person_Phone.UserService.UserViewModel user = service.GetById(id);
             return View(user);
         }
         public ActionResult MultiIndex()
         {
-            return View(repository.GetAll());
+            return View(service.GetAll());
         }
 
         [HttpGet]
@@ -30,41 +36,41 @@ namespace PersonDB_project.Controllers
 
         // GET: User/Create
         [HttpPost]
-        public ActionResult Create(User user, FormCollection collection)
+        public ActionResult Create(Person_Phone.UserService.UserViewModel user, FormCollection collection)
         {
             for (int i = 4; i < collection.Keys.Count; i += 2)
             {
                 if (collection.GetValue(collection.Keys[i]).AttemptedValue != "" || collection.GetValue(collection.Keys[i + 1]).AttemptedValue != "")
                 {
-                    user.Phones.Add(new Phone(collection.GetValue(collection.Keys[i]).AttemptedValue, collection.GetValue(collection.Keys[i + 1]).AttemptedValue, user.Id));
+                    user.Phones.Add(new Person_Phone.UserService.PhoneViewModel(collection.GetValue(collection.Keys[i]).AttemptedValue, collection.GetValue(collection.Keys[i + 1]).AttemptedValue, user.Id));
                 }
             }
-            repository.Create(user);
-            repository.Save();
+            service.Create(user);
+            service.Save();
             return RedirectToAction("MultiIndex");
         }
 
         // GET: User/Edit/5
         public ActionResult Edit(int id)
         {
-            User user = repository.GetById(id);
+            Person_Phone.UserService.UserViewModel user = service.GetById(id);
             return View(user);
         }
 
         // POST: User/Edit/5
         [HttpPost]
-        public ActionResult Edit(User user)
+        public ActionResult Edit(Person_Phone.UserService.UserViewModel user)
         {
-            repository.Update(user);
-                repository.Save();
+            service.Update(user);
+            service.Save();
 
-                return RedirectToAction("MultiIndex");
+            return RedirectToAction("MultiIndex");
         }
 
         // GET: User/Delete/5
         public ActionResult Delete(int id)
         {
-            User user = repository.GetById(id);
+            Person_Phone.UserService.UserViewModel user = service.GetById(id);
 
             return View(user);
         }
@@ -75,8 +81,8 @@ namespace PersonDB_project.Controllers
         {
             try
             {
-                repository.Delete(id);
-                repository.Save();
+                service.Delete(id);
+                service.Save();
                 return RedirectToAction("MultiIndex");
             }
             catch

@@ -24,16 +24,19 @@ namespace PersonDB_project.AdoRepo
 
         public IEnumerable<User> GetAll()
         {
-            string sqlStatement = "SELECT * FROM [Users] ";
+            var result = new List<User>();
+            string sqlStatement = "SELECT * FROM [Users]";
             using (DbCommand sqlCmd = _sqlDB.GetSqlStringCommand(sqlStatement))
             {
-                var result = new List<User>();
+               
                 using (IDataReader reader = _sqlDB.ExecuteReader(sqlCmd))
                 {
                     result = Mapper(reader);
                 }
-                return result;
+               
             }
+           
+            return result;
         }
 
         public User GetById(int id)
@@ -140,6 +143,23 @@ namespace PersonDB_project.AdoRepo
             return new User();
         }
         private List<User> Mapper(IDataReader reader)
+        {
+            var list = new List<User>();
+            while (reader.Read())
+            {
+                var user = new User
+                {
+                    Id = (int)reader["Id"],
+                    FirstName = (string)reader["FirstName"],
+                    LastName = (string)reader["LastName"],
+                    Age = (int)reader["Age"],
+                };
+                list.Add(user);
+            }
+            return list;
+        }
+
+        private List<User> MapperPhones(IDataReader reader)
         {
             var list = new List<User>();
             while (reader.Read())

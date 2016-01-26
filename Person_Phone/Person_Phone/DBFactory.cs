@@ -22,7 +22,7 @@ namespace PersonDB_project
                     }
                 case "Ado":
                     {
-                        repository = new AdoRepo.AdoNetRepository(@"Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename='C:\Git\Valtech\MVC_personDB_Project\PersonDB_project\PersonDB_project\App_Data\EntityRepo.EntityUserContext.mdf';Integrated Security=True");
+                        repository = new AdoRepo.AdoNetRepository(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename='C:\Git\Person_phone\Person_Phone\Person_Phone\App_Data\Default Connection.mdf';Integrated Security=True;Connect Timeout=30");
                         break;
                     }
                 case "NH":
