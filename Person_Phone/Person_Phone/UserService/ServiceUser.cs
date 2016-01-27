@@ -7,6 +7,7 @@ using PersonDB_project.Models;
 using Person_Phone.NHibernateRepo;
 using Person_Phone.Models;
 using Person_Phone.MongoDBRepo;
+using Person_Phone.CassandraRepo;
 
 namespace Person_Phone.UserService
 {
@@ -16,7 +17,8 @@ namespace Person_Phone.UserService
 
         public ServiceUser()
         {
-            this.repository = new MongoDBRepository();
+            this.repository = new CassandraRepository();
+            //this.repository = new MongoDBRepository();
             //this.repository = new NHibernateRepository(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename='C:\Git\Person_phone\Person_Phone\Person_Phone\App_Data\Default Connection.mdf';Integrated Security=True;Connect Timeout=30");
             //this.repository = new EntityRepo.EntityRepository();
         }

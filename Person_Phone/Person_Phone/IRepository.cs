@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PersonDB_project
+namespace Person_Phone
 {
     public interface IRepository<T>
     {
