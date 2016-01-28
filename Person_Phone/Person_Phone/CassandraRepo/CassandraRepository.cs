@@ -13,8 +13,8 @@ namespace Person_Phone.CassandraRepo
     public class CassandraRepository : IRepository<User>
     {
         Cluster cluster;
-        ISession session; 
-        
+        ISession session;
+
         public CassandraRepository()
         {
             cluster = Cluster.Builder().AddContactPoint("127.0.0.1").Build();
@@ -23,10 +23,10 @@ namespace Person_Phone.CassandraRepo
 
         public void Create(User user)
         {
-            CassandraUser csUser = UserToCassandraUser(user);
+            string hashString = user.FirstName + user.LastName + user.Age.ToString();
+            user.Id = hashString.GetHashCode();
 
-            string hashString = csUser.FirstName + csUser.LastName + csUser.Age.ToString();
-            csUser.Id = hashString.GetHashCode();
+            CassandraUser csUser = UserToCassandraUser(user);
 
             session.Execute("insert into users (Id, FirstName, LastName, Age) values (" + csUser.Id + ",'" + csUser.FirstName + "','" + csUser.LastName + "'," + csUser.Age + ")");
 
@@ -34,13 +34,13 @@ namespace Person_Phone.CassandraRepo
             {
                 session.Execute("insert into phones (id, phonetype, phonenumber, userid) values (" + phone.Id + ",'" + phone.PhoneType + "','" + phone.PhoneNumber + "'," + csUser.Id + ")");
             }
-            
+
         }
 
         public void Delete(int id)
         {
             session.Execute("delete from users where ID = " + id);
-            session.Execute("delete from phones where userid = " + id);
+            session.Execute("delete from phones where id = " + id);
         }
 
         public IEnumerable<User> GetAll()
@@ -52,16 +52,25 @@ namespace Person_Phone.CassandraRepo
 
             foreach (var row in records)
             {
-                    csList.Add(new CassandraUser
-                    {
-                        Id = row.GetValue<int>("id")
-                        ,
-                        FirstName = row.GetValue<string>("firstname")
-                        ,
-                        LastName = row.GetValue<string>("lastname")
-                        ,
-                        Age = row.GetValue<int>("age")
-                    });
+                CassandraUser csUser = new CassandraUser();
+
+                csUser.Id = row.GetValue<int>("id");
+                csUser.FirstName = row.GetValue<string>("firstname");
+                csUser.LastName = row.GetValue<string>("lastname");
+                csUser.Age = row.GetValue<int>("age");
+
+                var recordsPhones = session.Execute(("select * from phones where id = " + csUser.Id));
+
+                foreach (var rowPhone in recordsPhones)
+                {
+                    CassandraPhone csPhone = new CassandraPhone();
+                    csPhone.Id = rowPhone.GetValue<int>("id");
+                    csPhone.PhoneType = rowPhone.GetValue<string>("phonetype");
+                    csPhone.PhoneNumber = rowPhone.GetValue<string>("phonenumber");
+                    csPhone.userid = rowPhone.GetValue<int>("userid");
+                }
+
+                csList.Add(csUser);
             }
             foreach (var csUser in csList)
             {
@@ -71,22 +80,36 @@ namespace Person_Phone.CassandraRepo
 
             return users;
         }
-    
+
 
         public User GetById(int id)
         {
             var record = session.Execute("select * from users where id = " + id).FirstOrDefault();
 
             CassandraUser csUser = new CassandraUser
-                    {
-                        Id = record.GetValue<int>("id")
+            {
+                Id = record.GetValue<int>("id")
                         ,
-                        FirstName = record.GetValue<string>("firstname")
+                FirstName = record.GetValue<string>("firstname")
                         ,
-                        LastName = record.GetValue<string>("lastname")
+                LastName = record.GetValue<string>("lastname")
                         ,
-                        Age = record.GetValue<int>("age")
-                    };
+                Age = record.GetValue<int>("age")
+            };
+
+            var recordPhones = session.Execute("select * from phones where id = " + id);
+
+            foreach (var row in recordPhones)
+            {
+                CassandraPhone csPhone = new CassandraPhone();
+                csPhone.Id = row.GetValue<int>("id");
+                csPhone.PhoneType = row.GetValue<string>("phonetype");
+                csPhone.PhoneNumber = row.GetValue<string>("phonenumber");
+                csPhone.userid = row.GetValue<int>("userid");
+
+                csUser.Phones.Add(csPhone);
+            }
+
             User user = CassandraUserToUser(csUser);
 
             return user;
@@ -100,7 +123,12 @@ namespace Person_Phone.CassandraRepo
         public void Update(User item)
         {
             CassandraUser csUser = UserToCassandraUser(item);
-            session.Execute("update users set firstname = '" + csUser.FirstName + "', lastname = '" + csUser.LastName + "', age = " + csUser.Age + " where ID = " + csUser.Id);
+            session.Execute("update users set firstname = '" + csUser.FirstName + "', lastname = '" + csUser.LastName + "', age = " + csUser.Age + " where id = " + csUser.Id);
+
+            foreach (CassandraPhone csPhone in csUser.Phones)
+            {
+                session.Execute("update users set phonetype = '" + csPhone.PhoneType + "', phonenumber = '" + csPhone.PhoneNumber + "' where id = " + csUser.Id);
+            }
         }
 
         private User CassandraUserToUser(CassandraUser csUser)
@@ -112,9 +140,12 @@ namespace Person_Phone.CassandraRepo
             user.LastName = csUser.LastName;
             user.Age = csUser.Age;
 
+
             foreach (var csPhone in csUser.Phones)
             {
                 Phone phone = CassandraPhoneToPhone(csPhone);
+                phone.UserId = csUser.Id;
+                phone.Id = csUser.Id;
                 user.Phones.Add(phone);
             }
 
@@ -144,6 +175,8 @@ namespace Person_Phone.CassandraRepo
             foreach (Phone phone in user.Phones)
             {
                 CassandraPhone csPhone = PhoneToCassandraPhone(phone);
+                csPhone.userid = user.Id;
+                csPhone.Id = user.Id;
                 csUser.Phones.Add(csPhone);
             }
 

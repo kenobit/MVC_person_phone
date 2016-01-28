@@ -179,3 +179,13 @@ C:\Git\Person_phone\Person_Phone\Person_Phone\obj\Debug\Person_Phone.csprojResol
 C:\Git\Person_phone\Person_Phone\Person_Phone\bin\Cassandra.dll
 C:\Git\Person_phone\Person_Phone\Person_Phone\bin\LZ4.dll
 C:\Git\Person_phone\Person_Phone\Person_Phone\bin\Cassandra.xml
+C:\Git\Person_phone\Person_Phone\Person_Phone\bin\Neo4jClient.dll
+C:\Git\Person_phone\Person_Phone\Person_Phone\bin\Neo4jClient.Extension.Attributes.dll
+C:\Git\Person_phone\Person_Phone\Person_Phone\bin\Neo4jClient.Extension.dll
+C:\Git\Person_phone\Person_Phone\Person_Phone\bin\System.Net.Http.dll
+C:\Git\Person_phone\Person_Phone\Person_Phone\bin\System.Net.Http.WebRequest.dll
+C:\Git\Person_phone\Person_Phone\Person_Phone\bin\Neo4jClient.pdb
+C:\Git\Person_phone\Person_Phone\Person_Phone\bin\Neo4jClient.xml
+C:\Git\Person_phone\Person_Phone\Person_Phone\bin\Neo4jClient.Extension.Attributes.pdb
+C:\Git\Person_phone\Person_Phone\Person_Phone\bin\System.Net.Http.xml
+C:\Git\Person_phone\Person_Phone\Person_Phone\bin\System.Net.Http.WebRequest.xml

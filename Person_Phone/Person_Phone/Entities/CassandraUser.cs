@@ -14,6 +14,11 @@ namespace Person_Phone.Entities
         public string LastName { get; set; }
         public int Age { get; set; }
 
-        public virtual List<CassandraPhone> Phones { get; set; }
+        public List<CassandraPhone> Phones { get; set; }
+
+        public CassandraUser()
+        {
+            Phones = new List<CassandraPhone>();
+        }
     }
 }
