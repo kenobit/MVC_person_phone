@@ -27,7 +27,7 @@ namespace PersonDB_project.Models
             [Display(Name = "Возраст")]
         public int Age { get; set; }
 
-        public virtual List<Phone> Phones { get; set; }
+        public List<Phone> Phones { get; set; }
         public User()
         {
             Phones = new List<Phone>();

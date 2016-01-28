@@ -34,10 +34,33 @@
         <dd>
             @Html.DisplayFor(model => model.Age)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Phones)
+        </dt>
 
+        <dd>
+            @if (Model.Phones.Count == 0)
+            {
+                <span> У пользователя нет телефона</span>
+            }
+            else {
+                foreach (var phone in Model.Phones)
+                {
+                <span>
+                    @Html.DisplayFor(modelItem => phone.PhoneType)
+                </span>
+
+                <span>
+                    @Html.DisplayFor(modelItem => phone.PhoneNumber)
+                </span>
+                <br />
+                }
+            }
+        </dd>
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
