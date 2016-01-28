@@ -122,7 +122,6 @@ C:\Git\Person_phone\Person_Phone\Person_Phone\bin\roslyn\VBCSCompiler.exe.config
 C:\Git\Person_phone\Person_Phone\Person_Phone\bin\Person_Phone.dll.config
 C:\Git\Person_phone\Person_Phone\Person_Phone\bin\Person_Phone.dll
 C:\Git\Person_phone\Person_Phone\Person_Phone\bin\Person_Phone.pdb
-C:\Git\Person_phone\Person_Phone\Person_Phone\bin\Antlr3.Runtime.dll
 C:\Git\Person_phone\Person_Phone\Person_Phone\bin\EntityFramework.dll
 C:\Git\Person_phone\Person_Phone\Person_Phone\bin\EntityFramework.SqlServer.dll
 C:\Git\Person_phone\Person_Phone\Person_Phone\bin\FluentNHibernate.dll
@@ -157,7 +156,6 @@ C:\Git\Person_phone\Person_Phone\Person_Phone\bin\System.Web.Razor.xml
 C:\Git\Person_phone\Person_Phone\Person_Phone\bin\System.Web.WebPages.xml
 C:\Git\Person_phone\Person_Phone\Person_Phone\bin\System.Web.WebPages.Deployment.xml
 C:\Git\Person_phone\Person_Phone\Person_Phone\bin\System.Web.WebPages.Razor.xml
-C:\Git\Person_phone\Person_Phone\Person_Phone\bin\Antlr3.Runtime.pdb
 C:\Git\Person_phone\Person_Phone\Person_Phone\bin\Newtonsoft.Json.xml
 C:\Git\Person_phone\Person_Phone\Person_Phone\obj\Debug\Person_Phone.Migrations.InitialCreate.resources
 C:\Git\Person_phone\Person_Phone\Person_Phone\obj\Debug\Person_Phone.Migrations.Migration1.resources
@@ -189,3 +187,5 @@ C:\Git\Person_phone\Person_Phone\Person_Phone\bin\Neo4jClient.xml
 C:\Git\Person_phone\Person_Phone\Person_Phone\bin\Neo4jClient.Extension.Attributes.pdb
 C:\Git\Person_phone\Person_Phone\Person_Phone\bin\System.Net.Http.xml
 C:\Git\Person_phone\Person_Phone\Person_Phone\bin\System.Net.Http.WebRequest.xml
+C:\Git\Person_phone\Person_Phone\Person_Phone\bin\nunit.framework.dll
+C:\Git\Person_phone\Person_Phone\Person_Phone\bin\nunit.framework.xml

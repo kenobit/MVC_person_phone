@@ -139,3 +139,13 @@ C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\NHiber
 C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\FluentNHibernate.pdb
 C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\FluentNHibernate.xml
 C:\Git\Valtech\MVC_person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\Iesi.Collections.xml
+C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\Cassandra.dll
+C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\EntityFramework.SqlServer.dll
+C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\LZ4.dll
+C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\MongoDB.Driver.Legacy.dll
+C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\Neo4jClient.dll
+C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\Cassandra.xml
+C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\EntityFramework.SqlServer.xml
+C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\MongoDB.Driver.Legacy.xml
+C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\Neo4jClient.pdb
+C:\Git\Person_phone\Person_Phone\Person_Phone.Tests\bin\Debug\Neo4jClient.xml
