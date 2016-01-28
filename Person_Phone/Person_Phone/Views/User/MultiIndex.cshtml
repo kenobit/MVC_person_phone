@@ -69,3 +69,57 @@
     }
 
 </table>
+
+<div id="modalContainer">
+    <!-- Modal -->
+    <div id="myModal" class="modal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" id="bodyModal">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function AddPerson() {
+        $("#myModal").modal();
+        $.ajax({
+            method: "GET",
+            url: '@Url.Action("Create", "User")',
+            success: function (result) {
+                $("#bodyModal").html(result);
+            }
+        })
+    };
+
+    function EditPerson(id) {
+        $("#myModal").modal();
+        $.ajax({
+            method: "GET",
+            url: '@Url.Action("Edit", "User")',
+            data: { "id": id },
+            success: function (result) {
+                $("#bodyModal").html(result);
+            }
+        })
+    };
+
+    function AddPhone(id) {
+        $("#myModal").modal();
+        $.ajax({
+            method: "GET",
+            url: '@Url.Action("Details", "User")',
+            data: { "id": id },
+            success: function (result) {
+                $("#bodyModal").html(result);
+            }
+        })
+    };
+</script>
