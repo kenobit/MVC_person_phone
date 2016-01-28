@@ -37,14 +37,19 @@
         <dt>
             @Html.DisplayName("Телефоны")
         </dt>
-        @foreach (var item in Model.Phones)
+        @if (Model.Phones.Count == 0)
         {
-            <dd>
-                @Html.DisplayName(item.PhoneType)  
-                @Html.DisplayName(item.PhoneNumber)
-            </dd>
+            <span> У пользователя нет телефона</span>
         }
-        
+        else {
+            foreach (var item in Model.Phones)
+            {
+                <dd>
+                    @Html.DisplayName(item.PhoneType)
+                    @Html.DisplayName(item.PhoneNumber)
+                </dd>
+            }
+        }
 
     </dl>
 </div>

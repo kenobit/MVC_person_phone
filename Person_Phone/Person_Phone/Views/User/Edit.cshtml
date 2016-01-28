@@ -48,22 +48,28 @@
             <div>
                 @Html.DisplayName("Телефоны")
             </div>
-            @for(int i = 0; i < Model.Phones.Count; i++)
+            @if (Model.Phones.Count == 0)
             {
-                <div class="marT5px">
-                    @Html.HiddenFor(hidden => Model.Phones[i].UserId)
-                    @Html.HiddenFor(hidden => Model.Phones[i].Id)
-                    Type
-                    @Html.EditorFor(type => Model.Phones[i].PhoneType, new { htmlAttributes = new { @class = "form-control" } })
-                    Number
-                    @Html.EditorFor(number => Model.Phones[i].PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
-                    <button class="btn btn-danger" onclick="removeInput(this)" >-</button>
-                    @if (false)
-                    {
-                        @Model.Phones.Remove(Model.Phones[i])
+                <span> У пользователя нет телефона</span>
+            }
+            else {
+                for (int i = 0; i < Model.Phones.Count; i++)
+                {
+                    <div class="marT5px">
+                        @Html.HiddenFor(hidden => Model.Phones[i].UserId)
+                        @Html.HiddenFor(hidden => Model.Phones[i].Id)
+                        Type
+                        @Html.EditorFor(type => Model.Phones[i].PhoneType, new { htmlAttributes = new { @class = "form-control" } })
+                        Number
+                        @Html.EditorFor(number => Model.Phones[i].PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                        <button class="btn btn-danger" onclick="removeInput(this)">-</button>
+                        @if (false)
+                        {
+                            @Model.Phones.Remove(Model.Phones[i])
 
-                    }
-                </div>
+                        }
+                    </div>
+                }
             }
         </div>
 
