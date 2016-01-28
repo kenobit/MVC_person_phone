@@ -82,7 +82,7 @@ namespace Person_Phone.CyberRepo
         public User GetById(int id)
         {
             var result = client.Cypher
-                .OptionalMatch("(user:User)-[OWNED_BY]-(friend:Phone)")
+                .OptionalMatch("(user:User)-[OWNED]-(friend:Phone)")
                 .Where((User user) => user.Id == id)
                 .Return((user, friend) => new
                 {
