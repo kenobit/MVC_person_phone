@@ -1,0 +1,69 @@
+﻿@model PersonDB_project.Models.UserViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    <script language="javascript">
+        var increment = 0;
+        function add_input() {
+            $("#phoneDiv").append("<br /><div class='form-group form-inline'>Тип <input class='form-control' type=\"text\" name=\"TypePhone" + (increment += 1) + "\"/>" + " Номер " + "<input class='form-control' type=\"tel\" name=\"NumPhone" + increment + "\" /></div>")
+        }
+    </script>
+    @Html.AntiForgeryToken()
+    var i = 0;
+    var CodeBlockType = "<input type=\"text\" name=\"TypePhone" + (i += 1) + "\"/><input type=\"tel\" name=\"NumPhone" + i + "\" />";
+    <div class="form-horizontal">
+        <h4>User</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Телефоны", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10 col-md-offset-2" id="phoneDiv">
+                <br />
+                <div class="form-group form-inline">Тип <input class='form-control' type="text" name="TypePhone" /> Номер <input class='form-control' type='tel' name='NumPhone' /></div>
+            </div>
+            <input type="button" class="btn btn-success  col-md-offset-2" name="add_btn" value="+" onclick='add_input()' />
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-success btn-lg btn-block" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "MultiIndex")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

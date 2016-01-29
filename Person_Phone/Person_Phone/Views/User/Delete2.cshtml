@@ -1,0 +1,71 @@
+﻿@model PersonDB_project.Models.UserViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Phones)
+        </dt>
+
+        <dd>
+            @if (Model.Phones.Count == 0)
+            {
+                <span> У пользователя нет телефона</span>
+            }
+            else {
+                foreach (var phone in Model.Phones)
+                {
+                <span>
+                    @Html.DisplayFor(modelItem => phone.PhoneType)
+                </span>
+
+                <span>
+                    @Html.DisplayFor(modelItem => phone.PhoneNumber)
+                </span>
+                <br />
+                }
+            }
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "MultiIndex")
+        </div>
+    }
+</div>

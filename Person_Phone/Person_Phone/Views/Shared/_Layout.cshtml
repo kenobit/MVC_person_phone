@@ -16,19 +16,115 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Phone Book", "MultiIndex", "User", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Home", "MultiIndex", "User")</li>
                 </ul>
             </div>
+
         </div>
     </div>
     <div class="container body-content">
-        @RenderBody()
+
+        <div class="col-lg-10 col-md-10">@RenderBody()</div>
+        <div class="widget-container col-lg-2 col-md-2">
+            <div class="clock" id="clock">
+                <div class="clock-block"><div class="clock-hours" id="hours"></div></div>
+                <div class="clock-block">
+                    <div class="clock-minutes" id="minutes">22</div>
+                </div>
+                <div class="clock-block">
+                    <div class="clock-seconds" id="seconds">13</div>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                setInterval(function () {
+                    clock();
+                }, 1000);
+
+                function clock() {
+                    var time = new Date();
+                    var hours = time.getHours();
+                    var minutes = time.getMinutes();
+                    var seconds = time.getSeconds();
+
+                    if ($('.clock-hours').text() != ((hours < 10 ? "0" : "") + hours)) {
+                        $('.clock-hours').text((hours < 10 ? "0" : "") + hours);
+                        shake($('.clock-hours'));
+                    }
+
+                    if ($('.clock-minutes').text() != ((minutes < 10 ? "0" : "") + minutes)) {
+                        $('.clock-minutes').text((minutes < 10 ? "0" : "") + minutes);
+                        shake($('.clock-minutes'));
+                    }
+
+                    if ($('.clock-seconds').text() != ((seconds < 10 ? "0" : "") + seconds)) {
+                        $('.clock-seconds').text((seconds < 10 ? "0" : "") + seconds);
+                        shake($('.clock-seconds'));
+                    }
+                }
+
+                $(document).load(function () {
+                    clock();
+                });
+
+                function shake(t) {
+                    t.addClass('shake-block');
+                    setTimeout(function () {
+                        t.removeClass('shake-block');
+                    }, 470)
+                }
+            </script>
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d5290.977031158674!2d35.05184819999998!3d48.46634260000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sua!4v1454058732686" width="400" height="200" frameborder="0" style="border:0"></iframe>
+            <br />
+            <script type="text/javascript" charset="utf-8" src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=mX9I52uhMPOHYBGa3jmqAh4XmB7dtcUt&width=400&height=200&lang=ru_UA&sourceType=constructor"></script>
+            <br />
+            <!--Kurs.com.ua regional 398x170 Днепропетровск blue-->
+            <div id='kurs-com-ua-informer-regional-398x170-5-dnepropetrovsk-blue-container'><a id="kurs-com-ua-informer-regional-398x170-5-dnepropetrovsk-blue" title="Курс валют информер Украина">Информер курса валют</a></div>
+            <script type='text/javascript'>
+                (function () { var iframe = '<ifr' + 'ame src="http://kurs.com.ua/informer/regional2/5/616?color=blue" width="398" height="170" frameborder="0" vspace="0" scrolling="no" hspace="0"></ifr' + 'ame>'; var container = document.getElementById('kurs-com-ua-informer-regional-398x170-5-dnepropetrovsk-blue'); container.parentNode.innerHTML = iframe; })();
+            </script>
+            <noscript><img src='http://kurs.com.ua/static/images/informer/kurs.png' width='52' height='26' alt='kurs.com.ua: курс валют в Украине!' title='Курс валют' border='0' /></noscript>
+            <!--//Kurs.com.ua regional 398x170 Днепропетровск blue-->
+
+            <br />
+            <div class="CalcWidget">
+                <input type="text" name="a" id="a" placeholder="a" />
+                <select name="operation" id="operation">
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                    <option value="/">/</option>
+                    <option value="*">*</option>
+                </select>
+                <input type="text" name="b" id="b" placeholder="b" />
+                <input type="text" name="qwe" id="out" disabled="disabled" placeholder="result" />
+                <input type="submit" value="calculate" onclick="Send()" class="submit" />
+            </div>
+        </div>
+        <script>
+            var serviceUrl = 'http://localhost:61794/User/Calc';
+            var out = document.getElementById("out");
+            function Send() {
+                if ($('#b').html == "") {
+                    return;
+                }
+                var a = document.getElementById("a").value;
+                var b = document.getElementById("b").value;
+                var operation = document.getElementById("operation").value;
+                var params = '?a=' + encodeURIComponent(a) + '&b=' + encodeURIComponent(b) + '&operation=' + encodeURIComponent(operation);
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    out.value = xhttp.response.toString();
+
+                };
+                xhttp.open("POST", serviceUrl + params, true);
+                xhttp.send();
+            }
+        </script>
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>

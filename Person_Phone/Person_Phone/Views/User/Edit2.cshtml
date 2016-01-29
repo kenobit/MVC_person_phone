@@ -1,0 +1,90 @@
+﻿@model PersonDB_project.Models.UserViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+<script type="text/javascript">
+    function removeInput(elem) {
+        elem.parentNode.remove();
+    }
+</script>
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    int index = 0;
+    <div class="form-horizontal">
+        <h4>User</h4>
+        <hr />
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group form-inline">
+            <div>
+                @Html.DisplayName("Телефоны")
+            </div>
+            @if (Model.Phones.Count == 0)
+            {
+                <span> У пользователя нет телефона</span>
+            }
+            else {
+                for (int i = 0; i < Model.Phones.Count; i++)
+                {
+                    <div class="marT5px">
+                        @Html.HiddenFor(hidden => Model.Phones[i].UserId)
+                        @Html.HiddenFor(hidden => Model.Phones[i].Id)
+                        Type
+                        @Html.EditorFor(type => Model.Phones[i].PhoneType, new { htmlAttributes = new { @class = "form-control" } })
+                        Number
+                        @Html.EditorFor(number => Model.Phones[i].PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                        <button class="btn btn-danger" onclick="removeInput(this)">-</button>
+                        @if (false)
+                        {
+                            @Model.Phones.Remove(Model.Phones[i])
+
+                        }
+                    </div>
+                }
+            }
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "MultiIndex")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

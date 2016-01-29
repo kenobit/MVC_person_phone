@@ -29,3 +29,152 @@ textarea {
 .marT5px{
      margin-top: 5px;
 }
+
+.widget-container{
+    margin-top: 50px;
+}
+
+#a{
+    width: 50px;
+    border-radius: 5px;
+    padding-left: 5px;
+}
+
+#b{
+    margin-left: 10px;
+    width: 50px;
+    border-radius: 5px;
+    padding-left: 5px;
+    margin-right: 10px;
+}
+
+#operation{
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+#out{
+    width: 100px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 800;
+    margin-right: 20px;
+}
+
+.CalcWidget{
+    width: 400px;
+    margin-bottom: 20px;
+}
+
+.submit{
+    padding: 5px;
+    border-radius: 5px;
+    border: 2px solid red;
+    background:rgba(0, 0, 0, 0.00);
+    color: red;
+}
+
+.submit:hover{
+    background: red;
+    color: #fff;
+}
+
+.clock{
+    /*height: 100px;*/
+    width: 400px;
+    /*background: gray;*/
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-left: -10px;
+    text-align:right;
+}
+
+.clock-block{
+    display: inline-block;
+    height: 120px;
+    width: 120px;
+    border-radius: 15px;
+    background: #d96457;
+    border: 1px solid #fff;
+    margin-top: 10px;
+    text-align:center;
+    color: #fff;
+    line-height: 120px;
+    font-size: 65px;
+    font-family: 'Lao UI';
+    font-weight: 900; 
+    margin-right: 7px;
+     
+    
+}
+
+.shake-block{
+     animation: shake 150ms 2 linear;
+		  -moz-animation: shake 150ms 2 linear;
+		  -webkit-animation: shake 150ms 2 linear;
+		  -o-animation: shake 150ms 2 linear;
+}
+
+@keyframes shake {
+		  0% {
+		    transform: translate(0,2px);
+		  }
+		  50% {
+		    transform: translate(0, -2px);
+		  }
+		  100% {
+		    transform: translate(0, 0);
+		  }
+		}
+
+		@-moz-keyframes shake {
+		  0% {
+		    -moz-transform: translate(3px, 0);
+		  }
+		  50% {
+		    -moz-transform: translate(-3px, 0);
+		  }
+		  100% {
+		    -moz-transform: translate(0, 0);
+		  }
+		}
+
+		@-webkit-keyframes shake {
+		  0% {
+		    -webkit-transform: translate(3px, 0);
+		  }
+		  50% {
+		    -webkit-transform: translate(-3px, 0);
+		  }
+		  100% {
+		    -webkit-transform: translate(0, 0);
+		  }
+		}
+
+		@-ms-keyframes shake {
+		  0% {
+		    -ms-transform: translate(3px, 0);
+		  }
+		  50% {
+		    -ms-transform: translate(-3px, 0);
+		  }
+		  100% {
+		    -ms-transform: translate(0, 0);
+		  }
+		}
+
+		@-o-keyframes shake {
+		  0% {
+		    -o-transform: translate(3px, 0);
+		  }
+		  50% {
+		    -o-transform: translate(-3px, 0);
+		  }
+		  100% {
+		    -o-transform: translate(0, 0);
+		  }
+		}
+
+.clock-block:last-of-type{
+    margin-right: 0px;
+}

@@ -23,11 +23,34 @@ namespace PersonDB_project.Controllers
             service = repository;
         }
 
+        [HttpPost]
+        public double Calc(double a, double b, string operation)
+        {
+            double res = 0;
+            switch (operation)
+            {
+                case "*":
+                    res = a * b;
+                    break;
+                case "+":
+                    res = a + b;
+                    break;
+                case "-":
+                    res = a - b;
+                    break;
+                case "/":
+                    res = a / b;
+                    break;
+            }
+            //  return Content(res.ToString());
+            return res;
+        }
         // GET: User/Details/5
         public ActionResult Details(int id)
         {
             UserViewModel user = service.GetById(id);
-            return View(user);
+           // return View(user);
+            return PartialView(user);
         }
 
         public ActionResult MultiIndex()
@@ -38,7 +61,8 @@ namespace PersonDB_project.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            //return View();
+            return PartialView();
         }
 
         // GET: User/Create
@@ -61,7 +85,8 @@ namespace PersonDB_project.Controllers
         public ActionResult Edit(int id)
         {
             UserViewModel user = service.GetById(id);
-            return View(user);
+            // return View(user);
+            return PartialView(user);
         }
 
         // POST: User/Edit/5
@@ -79,7 +104,8 @@ namespace PersonDB_project.Controllers
         {
             UserViewModel user = service.GetById(id);
 
-            return View(user);
+            //return View(user);
+            return PartialView(user);
         }
 
         // POST: User/Delete/5
