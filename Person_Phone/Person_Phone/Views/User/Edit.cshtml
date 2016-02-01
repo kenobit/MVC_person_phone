@@ -10,9 +10,9 @@
 </script>
 <h2>Edit</h2>
 
-@using (Html.BeginForm())
+
+@using (Ajax.BeginForm("Edit", "User", new AjaxOptions { OnSuccess = "CRUDResult", UpdateTargetId = "MainContainer" }))
 {
-    int index = 0;
     <div class="form-horizontal">
         <h4>User</h4>
         <hr />
@@ -82,7 +82,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "MultiIndex")
+    @Html.ActionLink("Back to List", "Index")
 </div>
 
 @section Scripts {

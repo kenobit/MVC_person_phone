@@ -2,6 +2,7 @@
 using Person_Phone.UserService;
 using PersonDB_project.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -49,13 +50,18 @@ namespace PersonDB_project.Controllers
         public ActionResult Details(int id)
         {
             UserViewModel user = service.GetById(id);
-           // return View(user);
+            // return View(user);
             return PartialView(user);
+        }
+
+        public ActionResult Index()
+        {
+            return View();
         }
 
         public ActionResult MultiIndex()
         {
-            return View(service.GetAll());
+            return PartialView(service.GetAll());
         }
 
         [HttpGet]
@@ -67,18 +73,19 @@ namespace PersonDB_project.Controllers
 
         // GET: User/Create
         [HttpPost]
-        public ActionResult Create(UserViewModel user, FormCollection collection)
+        public ActionResult Create(UserViewModel user)
         {
-            for (int i = 4; i < collection.Keys.Count; i += 2)
-            {
-                if (collection.GetValue(collection.Keys[i]).AttemptedValue != "" || collection.GetValue(collection.Keys[i + 1]).AttemptedValue != "")
-                {
-                    user.Phones.Add(new PhoneViewModel(collection.GetValue(collection.Keys[i]).AttemptedValue, collection.GetValue(collection.Keys[i + 1]).AttemptedValue, user.Id));
-                }
-            }
+            //for (int i = 4; i < collection.Keys.Count-1; i += 2)
+            //{
+            //    if (collection.GetValue(collection.Keys[i]).AttemptedValue != "" || collection.GetValue(collection.Keys[i + 1]).AttemptedValue != "")
+            //    {
+            //        user.Phones.Add(new PhoneViewModel(collection.GetValue(collection.Keys[i]).AttemptedValue, collection.GetValue(collection.Keys[i + 1]).AttemptedValue, user.Id));
+            //    }
+            //}
             service.Create(user);
             //service.Save();
             return RedirectToAction("MultiIndex");
+
         }
 
         // GET: User/Edit/5
@@ -100,28 +107,30 @@ namespace PersonDB_project.Controllers
         }
 
         // GET: User/Delete/5
+        [HttpGet]
         public ActionResult Delete(int id)
         {
-            UserViewModel user = service.GetById(id);
-
+           // UserViewModel user = service.GetById(id);
+            service.Delete(id);
+            //        service.Save();
             //return View(user);
-            return PartialView(user);
+            return RedirectToAction("MultiIndex");
         }
 
-        // POST: User/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                service.Delete(id);
-                service.Save();
-                return RedirectToAction("MultiIndex");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //// POST: User/Delete/5
+        //[HttpPost]
+        //public ActionResult Delete(int id,FormCollection form)
+        //{
+        //    try
+        //    {
+        //        service.Delete(id);
+        //        service.Save();
+        //        return RedirectToAction("MultiIndex");
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
     }
 }

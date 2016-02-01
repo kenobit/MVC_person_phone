@@ -59,14 +59,12 @@
         </dd>
     </dl>
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+    @*@using (Ajax.BeginForm("Delete", "User", new AjaxOptions { OnSuccess = "CRUDResult", UpdateTargetId = "MainContainer" }))
+    {*@
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "MultiIndex")
+            <input type="button" value="Delete" onclick="CRUDResult()" class="btn btn-default" /> |
         </div>
-    }
+  
 </div>
 

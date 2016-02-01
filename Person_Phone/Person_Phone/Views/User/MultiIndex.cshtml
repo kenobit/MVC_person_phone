@@ -7,7 +7,6 @@
 <h2>MultiIndex</h2>
 
 <p>
-    @*Html.ActionLink("Create New", "Create")*@
     <button class="btn btn-success" onclick="Create()">Create new</button>
 
 </p>
@@ -63,81 +62,14 @@
             </td>
 
             <td>
-                @*Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-    @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
                 <button class="btn btn-primary" onclick="Edit(@item.Id)">Edit</button>
                 <button class="btn btn-info btn" onclick="Details(@item.Id)">Details</button>
                 <button class="btn btn-danger btn" onclick="Delete(@item.Id)">Delete</button>
-               @* @Ajax.ActionLink("Delete", "DeletePerson", "Home", new { id = item.Id }, new AjaxOptions { UpdateTargetId = "tableContainer" }, new { @class = "btn btn-danger" })*@
+               @* @Html.ActionLink("Del","Delete/"+item.Id,item.Id,new { @class = "btn btn-danger btn" })*@
             </td>
         </tr>
     }
 
 </table>
 
-<div id="modalContainer">
-    <!-- Modal -->
-    <div id="myModal" class="modal" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body" id="bodyModal">
 
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    function Create() {
-        $("#myModal").modal();
-        $.ajax({
-            method: "GET",
-            url: '@Url.Action("Create", "User")',
-            success: function (result) {
-                $("#bodyModal").html(result);
-            }
-        })
-    };
-
-    function Edit(id) {
-        $("#myModal").modal();
-        $.ajax({
-            method: "GET",
-            url: '@Url.Action("Edit", "User")',
-            data: { "id": id },
-            success: function (result) {
-                $("#bodyModal").html(result);
-            }
-        })
-    };
-
-    function Details(id) {
-        $("#myModal").modal();
-        $.ajax({
-            method: "GET",
-            url: '@Url.Action("Details", "User")',
-            data: { "id": id },
-            success: function (result) {
-                $("#bodyModal").html(result);
-            }
-        })
-    };
-
-    function Delete(id) {
-        $("#myModal").modal();
-        $.ajax({
-            method: "GET",
-            url: '@Url.Action("Delete", "User")',
-            data: { "id": id },
-            success: function (result) {
-                $("#bodyModal").html(result);
-            }
-        })
-    };
-</script>

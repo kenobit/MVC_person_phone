@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
+    @Scripts.Render("~/Scripts/jquery-1.10.2.js")
+    @Scripts.Render("~/Scripts/jquery-1.10.2.intellisense.js")
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
@@ -16,11 +19,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Phone Book", "MultiIndex", "User", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Phone Book", "Index", "User", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "MultiIndex", "User")</li>
+                    <li>@Html.ActionLink("Home", "Index", "User")</li>
                 </ul>
             </div>
 
@@ -29,6 +32,93 @@
     <div class="container body-content">
 
         <div class="col-lg-10 col-md-10">@RenderBody()</div>
+
+        <div id="modalContainer">
+            <!-- Modal -->
+            <div id="myModal" class="modal" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body" id="bodyModal">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function Create() {
+                $("#myModal").modal();
+                $.ajax({
+                    method: "GET",
+                    url: '@Url.Action("Create", "User")',
+                    success: function (result) {
+                        $("#bodyModal").html(result);
+
+                    }
+                })
+            };
+
+            function Edit(id) {
+                $("#myModal").modal();
+                $.ajax({
+                    method: "GET",
+                    url: '@Url.Action("Edit", "User")',
+                    data: { "id": id },
+                    success: function (result) {
+                        $("#bodyModal").html(result);
+                    }
+                })
+            };
+
+            function Details(id) {
+                $("#myModal").modal();
+                $.ajax({
+                    method: "GET",
+                    url: '@Url.Action("Details", "User")',
+                    data: { "id": id },
+                    success: function (result) {
+                        $("#bodyModal").html(result);
+                    }
+                })
+            };
+
+            function Delete(id) {
+                //$("#myModal").modal();
+                if (confirm("Are you sure?")) {
+
+                    $.ajax({
+                        method: "GET",
+                        url: '@Url.Action("Delete", "User")',
+                        data: { "id": id },
+                        success: function (result) {
+                            //$("#bodyModal").html(result);
+                            CRUDResult(result);
+                        },
+                        
+                    })
+                }
+            };
+
+            function CRUDResult(result) {
+                if (result.indexOf('.table') > 0) {
+                    $('body').removeClass('modal-open');
+                    $('.modal-backdrop').remove();
+                    $('#bodyModal').html("");
+                    $("#MainContainer").html(result);
+                    $('#myModal').modal('hide')
+                }
+                else {
+                    $("#bodyModal").html(result);
+                }
+            };
+
+        </script>
+
         <div class="widget-container col-lg-2 col-md-2">
             <div class="clock" id="clock">
                 <div class="clock-block"><div class="clock-hours" id="hours"></div></div>
