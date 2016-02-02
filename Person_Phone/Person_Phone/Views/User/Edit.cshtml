@@ -8,14 +8,10 @@
         elem.parentNode.remove();
     }
 </script>
-<h2>Edit</h2>
-
 
 @using (Ajax.BeginForm("Edit", "User", new AjaxOptions { OnSuccess = "CRUDResult", UpdateTargetId = "MainContainer" }))
 {
     <div class="form-horizontal">
-        <h4>User</h4>
-        <hr />
 
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -44,46 +40,59 @@
                 @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="form-group form-inline">
+        <div class="">
             <div>
-                @Html.DisplayName("Телефоны")
+                @Html.LabelFor(model => model.Phones, htmlAttributes: new { @class = "control-label" })
             </div>
             @if (Model.Phones.Count == 0)
             {
                 <span> У пользователя нет телефона</span>
             }
-            else {
-                for (int i = 0; i < Model.Phones.Count; i++)
+            else
+            {<div id="Phones" class="phones_block ">
+                @for (int i = 0; i < Model.Phones.Count; i++)
                 {
-                    <div class="marT5px">
-                        @Html.HiddenFor(hidden => Model.Phones[i].UserId)
-                        @Html.HiddenFor(hidden => Model.Phones[i].Id)
-                        Type
-                        @Html.EditorFor(type => Model.Phones[i].PhoneType, new { htmlAttributes = new { @class = "form-control" } })
-                        Number
-                        @Html.EditorFor(number => Model.Phones[i].PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
-                        <button class="btn btn-danger" onclick="removeInput(this)">-</button>
-                        @if (false)
-                        {
-                            @Model.Phones.Remove(Model.Phones[i])
 
-                        }
+                    @Html.HiddenFor(hidden => Model.Phones[i].UserId)
+                    @Html.HiddenFor(hidden => Model.Phones[i].Id)
+                    <div class="form-group">
+                      <div class="control-label col-md-2">
+                            <span class="modal_body_input_label_text">
+                                Type
+                            </span>
+                        </div>
+                        <div class="col-md-10">
+                            @Html.EditorFor(type => Model.Phones[i].PhoneType, new { htmlAttributes = new { @class = "form-control nav-justified" } })
+                        </div>
                     </div>
+                    <div class="form-group">
+                        <div class="control-label col-md-2">
+                            <span class="modal_body_input_label_text">
+                                Number
+                            </span>
+                        </div>
+                        <div class="col-md-8">
+                            @Html.EditorFor(number => Model.Phones[i].PhoneNumber, new { htmlAttributes = new { @class = "form-control nav-justified" } })
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-danger" onclick="removeInput(this)">-</button>
+                        </div>
+                    </div>
+                    if (false)
+                    {
+                        @Model.Phones.Remove(Model.Phones[i])
+                    }
                 }
-            }
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+            </div><br />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-12">
+                    <input type="submit" value="Save" class="btn btn-group-justified btn-success" />
+                </div>
             </div>
+            }
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

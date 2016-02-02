@@ -12,12 +12,16 @@ namespace PersonDB_project.Models
         [Key]
         public int Id { get; set; }
 
+        [Display(Name = "Имя")]
         public string FirstName { get; set; }
 
+        [Display(Name = "Фамилия")]
         public string LastName { get; set; }
 
+        [Display(Name = "Возраст")]
         public int Age { get; set; }
 
+        [Display(Name = "Телефоны:")]
         public virtual List<PhoneViewModel> Phones { get; set; }
         public UserViewModel()
         {

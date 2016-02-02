@@ -11,8 +11,10 @@ namespace Person_Phone.Models
         [Key]
         public int Id { get; set; }
 
+        [Display(Name = "Номер телефона")]
         public string PhoneNumber { get; set; }
 
+        [Display(Name = "Тип")]
         public string PhoneType { get; set; }
 
         public int UserId { get; set; }

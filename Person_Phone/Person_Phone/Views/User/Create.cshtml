@@ -4,65 +4,102 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<script language="javascript">
+    var increment = 0;
+    function add_input() {
+        $("#Phones").append("<br />" +
+                "<div class=\"phone_group form-group form-inline\">" +
+                    '<div class="col-md-2">' +
+                        '<span class="modal_body_input_label_text with-margin">' +
+                            'Тип' +
+                        '</span>' +
+                    '</div>' +
+                    '<div class="col-md-10">' +
+                        '<input class=\'form-control text-box with-margin\' type="text" name="PhoneType' + (increment += 1) + '" />' +
+                    '</div>' +
+                '</div>' +
+                '<div class="phone_group form-group form-inline">' +
+                    '<div class="col-md-2">' +
+                        '<span class="modal_body_input_label_text">' +
+                            'Номер' +
+                        '</span>' +
+                    '</div>' +
+                    '<div class="col-md-10">' +
+                        '<input class=\'form-control text-box with-margin\' type=\'tel\' name=\'PhoneNumber' + increment + '\' />' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+        '</div>');
+    }
+</script>
+<form id="createForm">
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
 
-@*@using (Ajax.BeginForm("Create", "User", new AjaxOptions {  OnSuccess = "CRUDResult", UpdateTargetId = "MainContainer" }))*@
-@{
-    <script language="javascript">
-        var increment = 0;
-        function add_input() {
-            $("#Phones").append("<br /><div class='phone_group form-group form-inline'>Тип <input class='form-control' type=\"text\" name=\"PhoneType" + (increment += 1) + "\"/>" + " Номер " + "<input class='form-control' type=\"tel\" name=\"PhoneNumber" + increment + "\" /></div>")
-        }
-    </script>
-    <form id="createForm">
-        @Html.AntiForgeryToken()
-        <div class="form-horizontal">
-            <h4>User</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @id = "FirstName" } })
-                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
-                </div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @id = "FirstName" } })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
             </div>
+        </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @id = "LastName" } })
-                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
-                </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @id = "LastName" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
             </div>
+        </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control", @id = "Age" } })
-                    @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
-                </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control", @id = "Age" } })
+                @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
             </div>
-            <div class="form-group">
-                @Html.Label("Телефоны", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10 col-md-offset-2" id="Phones">
-                    <br />
-                    <div class="phone_group form-group form-inline">Тип <input class='form-control' type="text" name="PhoneType" /> Номер <input class='form-control' type='tel' name='PhoneNumber' /></div>
+        </div>
+        <div class="form-group form-group-header">
+            @Html.Label("Телефоны", htmlAttributes: new { @class = "control-label col-md-2" })
+            <br/>
+            <div id="Phones">
+
+                <br />
+                <div class="phone_group form-group form-inline">
+                    <div class="col-md-2">
+                        <span class="modal_body_input_label_text">
+                            Тип
+                        </span>
+                    </div>
+                    <div class="col-md-10">
+                        <input class='form-control text-box with-margin' type="text" name="PhoneType" />
+                    </div>
                 </div>
-                <input type="button" class="btn btn-success  col-md-offset-2" name="add_btn" value="+" onclick='add_input()' />
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" id="SaveBtn" class="btn btn-success btn-lg btn-block" />
+                <div class="phone_group form-group form-inline">
+                    <div class="col-md-2">
+                        <span class="modal_body_input_label_text">
+                            Номер
+                        </span>
+                    </div>
+                    <div class="col-md-10">
+                        <input class='form-control text-box with-margin' type='tel' name='PhoneNumber' />
+                    </div>
                 </div>
             </div>
         </div>
-    </form>
-}
+        <input type="button" class="btn btn-success  col-md-offset-1" name="add_btn" value="+" onclick='add_input()' />
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" id="SaveBtn" class="btn btn-success btn-lg btn-block" />
+        </div>
+    </div>
+
+</form>
+
+
 
 
 <script type="text/javascript">
@@ -71,13 +108,13 @@
         $('#createForm').submit(function (e) {
             e.preventDefault();
             GatherAll();
-         
+
         })
     });
 
 
     function GatherAll() {
-   
+
         var data = {
             "FirstName": $("#FirstName").val(),
             "LastName": $("#LastName").val(),
